@@ -21,7 +21,7 @@ const PhotoList = () => {
         const response = await axios.get(API_URL, {
             params: {
               page: page.current,
-              per_page: 20,
+              per_page: 80,
               client_id: CLIENT_ID,
             },
           });
@@ -41,13 +41,16 @@ const PhotoList = () => {
 
   }, [page, loading, hasMore]);
 
+  useEffect(() => {
+    fetchPhotos();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       if (
         window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 200 &&
         !loading &&
-        hasMore && ref.current
+        hasMore && ref.current && photos.length
       ) {
         ref.current = false;
         fetchPhotos();
