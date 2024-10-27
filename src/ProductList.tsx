@@ -33,7 +33,7 @@ const PhotoList = () => {
           }
           setLoading(false)
           ref.current = true;
-      }, 2000);
+      }, 1000);
       
     } catch (error) {
       console.error("Error fetching photos", error);
@@ -41,10 +41,6 @@ const PhotoList = () => {
 
   }, [page, loading, hasMore]);
 
-//   // Load initial photos
-//   useEffect(() => {
-//     fetchPhotos();
-//   }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,7 +82,7 @@ const PhotoList = () => {
           </Link>
         ))}
       </div>
-      {loading && <div style={{ textAlign: "center" }}>Loading more photos...</div>}
+      {loading && <div style={{ textAlign: "center" }}>Loading.............</div>}
       {!hasMore && <div style={{ textAlign: "center" }}>No more photos to load</div>}
     </div>
   );
